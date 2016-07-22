@@ -16,20 +16,20 @@ describe Pundit do
   let(:tag_four_five_six) { ProjectOneTwoThree::TagFourFiveSix.new(user) }
   let(:avatar_four_five_six) { ProjectOneTwoThree::AvatarFourFiveSix.new }
 
-  describe ".authorize" do
+  describe ".check_access" do
     it "infers the policy and authorizes based on it" do
-      expect(Pundit.authorize(user, post, :update?)).to be_truthy
+      expect(Pundit.check_acess(user, post, :update?)).to be_truthy
     end
 
     it "works with anonymous class policies" do
-      expect(Pundit.authorize(user, article_tag, :show?)).to be_truthy
-      expect { Pundit.authorize(user, article_tag, :destroy?) }.to raise_error(Pundit::NotAuthorizedError)
+      expect(Pundit.check_acess(user, article_tag, :show?)).to be_truthy
+      expect { Pundit.check_acess(user, article_tag, :destroy?) }.to raise_error(Pundit::NotAuthorizedError)
     end
 
     it "raises an error with a query and action" do
       # rubocop:disable Style/MultilineBlockChain
       expect do
-        Pundit.authorize(user, post, :destroy?)
+        Pundit.check_acess(user, post, :destroy?)
       end.to raise_error(Pundit::NotAuthorizedError, "not allowed to destroy? this #<Post>") do |error|
         expect(error.query).to eq :destroy?
         expect(error.record).to eq post

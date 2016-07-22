@@ -175,7 +175,7 @@ protected
   #   If omitted then this defaults to the Rails controller action name.
   # @raise [NotAuthorizedError] if the given query method returned false
   # @return [Object] Always returns the passed object record
-  def authorize(record, query = nil)
+  def check_access(record, query = nil)
     query ||= params[:action].to_s + "?"
 
     @_pundit_policy_authorized = true

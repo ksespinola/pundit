@@ -21,7 +21,7 @@
 - Add `permitted_attributes` helper to fetch attributes from policy.
 - Add `pundit_policy_authorized?` and `pundit_policy_scoped?` methods.
 - Instance variables are prefixed to avoid collisions.
-- Add `Pundit.authorize` method.
+- Add `Pundit.check_access` method.
 - Add `skip_authorization` and `skip_policy_scope` helpers.
 - Better errors when checking multiple permissions in RSpec tests.
 - Better errors in case `nil` is passed to `policy` or `policy_scope`.
